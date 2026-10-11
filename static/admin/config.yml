@@ -1,0 +1,31 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# New uploads go here; existing images live in static/images/
+media_folder: "static/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "articles"
+    label: "Articles"
+    folder: "content/articles"
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Category", name: "category", widget: "string", hint: "e.g. Cover story · Colour, or Style notes" }
+      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Image alt text", name: "image_alt", widget: "string", required: false }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - label: "Section"
+        name: "section"
+        widget: "select"
+        default: "journal"
+        options:
+          - { label: "Style note (journal list)", value: "journal" }
+          - { label: "Featured story (edit grid)", value: "edit" }
+      - { label: "Body", name: "body", widget: "markdown" }

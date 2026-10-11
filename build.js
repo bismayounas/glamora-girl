@@ -135,9 +135,20 @@ function main() {
     copied++;
   }
 
+  // copy admin panel: static/admin -> public/admin (Decap CMS + config)
+  const srcAdmin = path.join(ROOT, 'static', 'admin');
+  const dstAdmin = path.join(PUBLIC, 'admin');
+  fs.mkdirSync(dstAdmin, { recursive: true });
+  let adminCopied = 0;
+  for (const f of fs.readdirSync(srcAdmin)) {
+    fs.copyFileSync(path.join(srcAdmin, f), path.join(dstAdmin, f));
+    adminCopied++;
+  }
+
   console.log(`built public/index.html (${tpl.length} chars)`);
   console.log(`articles: ${edits.length} featured stories, ${notes.length} journal notes`);
   console.log(`images copied: ${copied}`);
+  console.log(`admin files copied: ${adminCopied}`);
 }
 
 main();
