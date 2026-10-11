@@ -158,8 +158,7 @@ function main() {
   );
   const today = new Date().toISOString().slice(0, 10);
   const urls = [
-    { loc: 'https://glamoragirl.online/', lastmod: today, priority: '1.0' },
-    { loc: 'https://glamoragirl.online/admin/', lastmod: today, priority: '0.1' },
+    { loc: 'https://glamoragirl.online/', lastmod: today, changefreq: 'weekly', priority: '1.0' },
   ];
   const sitemap =
     '<?xml version="1.0" encoding="UTF-8"?>\n' +
@@ -167,7 +166,7 @@ function main() {
     urls
       .map(
         (u) =>
-          `  <url>\n    <loc>${u.loc}</loc>\n    <lastmod>${u.lastmod}</lastmod>\n    <priority>${u.priority}</priority>\n  </url>`
+          `  <url>\n    <loc>${u.loc}</loc>\n    <lastmod>${u.lastmod}</lastmod>\n    <changefreq>${u.changefreq}</changefreq>\n    <priority>${u.priority}</priority>\n  </url>`
       )
       .join('\n') +
     '\n</urlset>\n';
