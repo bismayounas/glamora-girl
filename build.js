@@ -149,6 +149,30 @@ function main() {
   console.log(`articles: ${edits.length} featured stories, ${notes.length} journal notes`);
   console.log(`images copied: ${copied}`);
   console.log(`admin files copied: ${adminCopied}`);
+
+  // SEO: robots.txt + sitemap.xml
+  fs.writeFileSync(
+    path.join(PUBLIC, 'robots.txt'),
+    'User-agent: *\nAllow: /\n\nSitemap: https://glamoragirl.online/sitemap.xml\n',
+    'utf8'
+  );
+  const today = new Date().toISOString().slice(0, 10);
+  const urls = [
+    { loc: 'https://glamoragirl.online/', lastmod: today, priority: '1.0' },
+    { loc: 'https://glamoragirl.online/admin/', lastmod: today, priority: '0.1' },
+  ];
+  const sitemap =
+    '<?xml version="1.0" encoding="UTF-8"?>\n' +
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    urls
+      .map(
+        (u) =>
+          `  <url>\n    <loc>${u.loc}</loc>\n    <lastmod>${u.lastmod}</lastmod>\n    <priority>${u.priority}</priority>\n  </url>`
+      )
+      .join('\n') +
+    '\n</urlset>\n';
+  fs.writeFileSync(path.join(PUBLIC, 'sitemap.xml'), sitemap, 'utf8');
+  console.log('robots.txt + sitemap.xml written');
 }
 
 main();
