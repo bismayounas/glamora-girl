@@ -169,6 +169,7 @@ function main() {
   const today = new Date().toISOString().slice(0, 10);
   const urls = [
     { loc: 'https://glamoragirl.online/', lastmod: today, changefreq: 'weekly', priority: '1.0' },
+    { loc: 'https://glamoragirl.online/privacy.html', lastmod: today, changefreq: 'yearly', priority: '0.3' },
   ];
   const sitemap =
     '<?xml version="1.0" encoding="UTF-8"?>\n' +
