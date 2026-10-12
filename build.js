@@ -150,6 +150,16 @@ function main() {
   console.log(`images copied: ${copied}`);
   console.log(`admin files copied: ${adminCopied}`);
 
+  // copy root-level static pages (e.g. privacy.html) -> public/
+  let pagesCopied = 0;
+  for (const f of fs.readdirSync(path.join(ROOT, 'static'))) {
+    if (f.endsWith('.html')) {
+      fs.copyFileSync(path.join(ROOT, 'static', f), path.join(PUBLIC, f));
+      pagesCopied++;
+    }
+  }
+  console.log(`static pages copied: ${pagesCopied}`);
+
   // SEO: robots.txt + sitemap.xml
   fs.writeFileSync(
     path.join(PUBLIC, 'robots.txt'),
