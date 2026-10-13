@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="color-scheme" content="light dark" />
+  <meta name="color-scheme" content="light" />
   <link rel="icon" href="data:," />
   <title>Glamora Girl — Fashion, Styled with Intention</title>
   <meta name="description" content="Glamora Girl is an independent fashion journal for expressive style, thoughtful wardrobes, and confident dressing." />
@@ -21,388 +21,86 @@
   <meta name="twitter:image" content="https://glamoragirl.online/images/hero.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      color-scheme: light dark;
-      --paper: #f7f4ef;
-      --surface: #fffdf9;
-      --ink: #171614;
-      --muted: #625e58;
-      --line: #d8d2c9;
-      --accent: #c92c56;
-      --accent-dark: #8e1535;
-      --signal: #f0b7c7;
-      --shadow: 0 18px 50px rgba(50, 35, 29, .09);
-      --serif: "Libre Baskerville", Georgia, serif;
-      --sans: "DM Sans", system-ui, sans-serif;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --paper: #131210;
-        --surface: #1d1b18;
-        --ink: #f4efe8;
-        --muted: #bdb5ab;
-        --line: #3e3933;
-        --accent: #f15e83;
-        --accent-dark: #ff9bb4;
-        --signal: #61283a;
-        --shadow: 0 22px 60px rgba(0, 0, 0, .32);
-      }
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font-family: var(--sans);
-      line-height: 1.6;
-      text-rendering: optimizeLegibility;
-    }
-    img { display: block; width: 100%; }
-    a { color: inherit; }
-    button { font: inherit; }
-    ::selection { background: var(--signal); color: var(--ink); }
-    .skip-link {
-      position: fixed; left: 16px; top: -80px; z-index: 100;
-      background: var(--ink); color: var(--paper); padding: 10px 14px;
-    }
-    .skip-link:focus { top: 12px; }
-    .masthead {
-      position: sticky; top: 0; z-index: 20;
-      background: color-mix(in srgb, var(--paper) 93%, transparent);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav {
-      max-width: 1240px; margin: 0 auto; padding: 13px 28px;
-      display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 28px;
-    }
-    .brand {
-      font: 700 1.08rem/1 var(--serif);
-      letter-spacing: -.02em; text-decoration: none;
-      white-space: nowrap;
-    }
-    .brand em { color: var(--accent); font-style: italic; }
-    .nav-links { display: flex; justify-content: center; gap: 24px; }
-    .nav-links a, .issue-link {
-      font-size: .8rem; font-weight: 600; text-decoration: none;
-      letter-spacing: .07em; text-transform: uppercase;
-    }
-    .nav-links a { color: var(--muted); }
-    .nav-links a:hover, .nav-links a:focus-visible { color: var(--accent); }
-    .issue-link { border-bottom: 1px solid var(--ink); }
-    main { overflow: hidden; }
-    section[id] { scroll-margin-top: 116px; }
-    .hero {
-      max-width: 1240px; margin: 0 auto; padding: 54px 28px 72px;
-      display: grid; grid-template-columns: minmax(0, .92fr) minmax(380px, 1.08fr);
-      gap: clamp(36px, 6vw, 88px); align-items: center;
-    }
-    .hero-copy { padding-left: clamp(0px, 2vw, 24px); }
-    .issue { color: var(--accent); font-weight: 600; font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; }
-    h1, h2, h3 { font-family: var(--serif); margin: 0; line-height: 1.08; text-wrap: balance; }
-    h1 { font-size: clamp(3.2rem, 7.3vw, 7rem); letter-spacing: -.055em; max-width: 8ch; }
-    .hero-deck { max-width: 31rem; margin: 24px 0 30px; font-size: 1.06rem; color: var(--muted); }
-    .cta {
-      display: inline-flex; align-items: center; gap: 12px;
-      background: var(--ink); color: var(--paper); padding: 13px 18px;
-      text-decoration: none; font-weight: 600; font-size: .88rem;
-    }
-    .cta::after { content: "→"; font-size: 1.2rem; transition: transform .2s ease; }
-    .cta:hover::after { transform: translateX(4px); }
-    .hero-visual { position: relative; min-height: 610px; }
-    .hero-visual::before {
-      content: ""; position: absolute; width: 58%; height: 82%; right: -28px; top: 9%;
-      background: var(--signal);
-    }
-    .hero-visual img {
-      position: relative; width: 78%; height: 610px; margin-left: auto;
-      object-fit: cover; object-position: 50% 40%; box-shadow: var(--shadow);
-      filter: saturate(.92) contrast(1.03);
-    }
-    .photo-note {
-      position: absolute; left: 0; bottom: 32px; width: 190px;
-      background: var(--surface); border-top: 3px solid var(--accent); padding: 16px 18px;
-      box-shadow: var(--shadow); font-size: .78rem; color: var(--muted);
-    }
-    .photo-note strong { display: block; color: var(--ink); font-family: var(--serif); font-size: 1rem; margin-bottom: 4px; }
-    .photo-note a { text-underline-offset: 3px; }
-    .ticker {
-      border-block: 1px solid var(--line); background: var(--surface);
-    }
-    .ticker-inner {
-      max-width: 1184px; margin: 0 auto; padding: 14px 0;
-      display: flex; align-items: center; justify-content: center; gap: 22px;
-      color: var(--muted); font-size: .74rem; letter-spacing: .13em; text-transform: uppercase;
-      white-space: nowrap;
-    }
-    .dot { width: 5px; height: 5px; background: var(--accent); border-radius: 50%; }
-    .section { max-width: 1184px; margin: 0 auto; padding: 88px 28px; }
-    .section-head {
-      display: flex; justify-content: space-between; gap: 28px; align-items: end;
-      margin-bottom: 34px; border-bottom: 1px solid var(--line); padding-bottom: 18px;
-    }
-    .section-head h2 { font-size: clamp(2rem, 4vw, 3.8rem); letter-spacing: -.04em; }
-    .section-head p { max-width: 29rem; margin: 0; color: var(--muted); font-size: .93rem; }
-    .stories { display: grid; grid-template-columns: 1.12fr .88fr .88fr; gap: 22px; }
-    .story { min-width: 0; }
-    .story-image { overflow: hidden; background: var(--surface); aspect-ratio: 4/5; }
-    .story:first-child .story-image { aspect-ratio: 4/4.25; }
-    .story-image img { height: 100%; object-fit: cover; transition: transform .55s ease; }
-    .story:hover .story-image img { transform: scale(1.025); }
-    .story-meta { color: var(--accent); margin-top: 18px; font-weight: 600; font-size: .72rem; letter-spacing: .11em; text-transform: uppercase; }
-    .story h3 { font-size: clamp(1.18rem, 2vw, 1.65rem); margin-top: 8px; letter-spacing: -.025em; }
-    .story p { color: var(--muted); margin: 10px 0 0; font-size: .9rem; }
-    .journal {
-      background: var(--ink); color: var(--paper);
-    }
-    .journal-inner { max-width: 1184px; margin: 0 auto; padding: 86px 28px; }
-    .journal-intro { display: grid; grid-template-columns: .8fr 1.2fr; gap: 52px; margin-bottom: 42px; }
-    .journal h2 { font-size: clamp(2.2rem, 5vw, 4.8rem); letter-spacing: -.045em; }
-    .journal-intro p { color: color-mix(in srgb, var(--paper) 72%, transparent); max-width: 38rem; margin: 8px 0 0; }
-    .article-list { border-top: 1px solid color-mix(in srgb, var(--paper) 25%, transparent); }
-    .article-row {
-      border-bottom: 1px solid color-mix(in srgb, var(--paper) 25%, transparent);
-    }
-    .article-row summary {
-      display: grid; grid-template-columns: 74px 1fr auto; gap: 24px; align-items: center;
-      padding: 26px 0; cursor: pointer; list-style: none;
-    }
-    .article-row summary::-webkit-details-marker { display: none; }
-    .article-row summary::marker { display: none; }
-    .article-row summary:hover h3, .article-row summary:focus-visible h3 { color: var(--accent-dark); }
-    .article-row[open] summary { padding-bottom: 18px; }
-    .article-no { color: var(--accent); font-family: var(--serif); font-style: italic; }
-    .article-row h3 { font-size: clamp(1.25rem, 2.5vw, 2.05rem); letter-spacing: -.02em; transition: color .2s ease; }
-    .article-summary { margin: 7px 0 0; color: color-mix(in srgb, var(--paper) 66%, transparent); font-size: .88rem; }
-    .read-time { color: color-mix(in srgb, var(--paper) 65%, transparent); font-size: .76rem; white-space: nowrap; }
-    .read-cue { display: inline-flex; align-items: center; gap: 7px; margin-left: 12px; color: var(--accent-dark); font-weight: 600; }
-    .read-cue::after { content: "+"; font-size: 1rem; }
-    .article-row[open] .read-cue::after { content: "−"; }
-    .article-body {
-      max-width: 760px; margin: 0 0 30px 98px; padding-top: 20px;
-      border-top: 1px solid color-mix(in srgb, var(--paper) 14%, transparent);
-      color: color-mix(in srgb, var(--paper) 78%, transparent);
-    }
-    .article-body p { margin: 0 0 16px; font-family: var(--serif); font-size: .98rem; line-height: 1.85; }
-    .article-body p:last-child { margin-bottom: 0; }
-    .palette { max-width: 1184px; margin: 0 auto; padding: 88px 28px; display: grid; grid-template-columns: .8fr 1.2fr; gap: 58px; }
-    .palette-copy { align-self: center; }
-    .palette h2 { font-size: clamp(2.1rem, 4vw, 4rem); letter-spacing: -.045em; }
-    .palette p { color: var(--muted); max-width: 30rem; }
-    .swatches { display: grid; grid-template-columns: repeat(4, 1fr); min-height: 290px; box-shadow: var(--shadow); }
-    .swatch { display: flex; align-items: end; padding: 14px; color: #fff; font-size: .73rem; font-weight: 600; }
-    .swatch:nth-child(1) { background: #7c1f38; }
-    .swatch:nth-child(2) { background: #d17887; }
-    .swatch:nth-child(3) { background: #e0a017; color: #241b0a; }
-    .swatch:nth-child(4) { background: #274b42; }
-    .about-wrap { background: var(--surface); border-block: 1px solid var(--line); }
-    .about { max-width: 1184px; margin: 0 auto; padding: 88px 28px; display: grid; grid-template-columns: .95fr 1.05fr; gap: 70px; }
-    .about h2 { font-size: clamp(2.3rem, 5vw, 4.7rem); letter-spacing: -.045em; }
-    .about-copy > p { margin: 5px 0 24px; font-family: var(--serif); font-size: 1.15rem; line-height: 1.8; }
-    .principles { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .principle { border-top: 1px solid var(--line); padding-top: 14px; }
-    .principle strong { display: block; margin-bottom: 5px; }
-    .principle span { color: var(--muted); font-size: .86rem; }
-    .contact {
-      max-width: 1184px; margin: 0 auto; padding: 76px 28px;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
-    }
-    .contact h2 { font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: -.04em; }
-    .contact p { color: var(--muted); }
-    .contact-options { display: grid; gap: 0; border-top: 1px solid var(--line); }
-    .contact-item { display: grid; grid-template-columns: 1fr auto; gap: 22px; border-bottom: 1px solid var(--line); padding: 18px 0; }
-    .contact-item strong { font-family: var(--serif); }
-    .contact-item span { color: var(--muted); font-size: .82rem; }
-    footer { background: #8f1738; color: #fff8f8; }
-    .footer-inner { max-width: 1184px; margin: 0 auto; padding: 46px 28px 34px; }
-    .footer-main { display: flex; justify-content: space-between; align-items: end; gap: 40px; padding-bottom: 34px; }
-    .footer-brand { font: 700 clamp(2.2rem, 5vw, 4.6rem)/1 var(--serif); letter-spacing: -.05em; }
-    .footer-tag { max-width: 22rem; opacity: .84; margin: 12px 0 0; }
-    .footer-nav { display: flex; gap: 18px; flex-wrap: wrap; justify-content: flex-end; }
-    .footer-nav a { font-size: .8rem; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.45); }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,.25); padding-top: 18px; display: flex; justify-content: space-between; gap: 20px; font-size: .74rem; opacity: .82; }
-    :focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
-    @media (max-width: 900px) {
-      .nav { grid-template-columns: auto 1fr; }
-      .issue-link { justify-self: end; }
-      .nav-links { grid-column: 1/-1; order: 3; justify-content: flex-start; overflow: hidden; gap: 20px; }
-      .hero { grid-template-columns: 1fr; padding-top: 44px; }
-      h1 { max-width: 9ch; font-size: clamp(3.3rem, 14vw, 6rem); }
-      .hero-visual { min-height: 540px; }
-      .hero-visual img { height: 540px; width: 82%; }
-      .stories { grid-template-columns: 1fr 1fr; }
-      .story:first-child { grid-column: 1/-1; display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px; align-items: center; }
-      .journal-intro, .palette, .about, .contact { grid-template-columns: 1fr; gap: 36px; }
-      .footer-main { align-items: flex-start; flex-direction: column; }
-      .footer-nav { justify-content: flex-start; }
-    }
-    @media (max-width: 620px) {
-      .nav { padding: 12px 18px 10px; gap: 12px; }
-      .nav-links { gap: 15px; }
-      .nav-links a { font-size: .69rem; }
-      .issue-link { font-size: .68rem; }
-      .hero { padding: 36px 18px 54px; gap: 36px; }
-      .hero-copy { padding: 0; }
-      .hero-deck { font-size: .96rem; }
-      .hero-visual { min-height: 450px; }
-      .hero-visual img { width: 86%; height: 450px; }
-      .hero-visual::before { right: -18px; }
-      .photo-note { left: 0; bottom: 20px; width: 165px; padding: 13px; }
-      .ticker-inner { font-size: .64rem; gap: 10px; white-space: normal; text-align: center; flex-wrap: wrap; padding-inline: 18px; }
-      .section, .journal-inner, .palette, .about, .contact { padding: 64px 18px; }
-      .section-head { display: block; }
-      .section-head p { margin-top: 14px; }
-      .stories { grid-template-columns: 1fr; gap: 38px; }
-      .story:first-child { grid-column: auto; display: block; }
-      .story:first-child .story-image, .story-image { aspect-ratio: 4/4.6; }
-      .journal-intro { display: block; }
-      .journal-intro p { margin-top: 18px; }
-      .article-row summary { grid-template-columns: 42px 1fr; gap: 12px; }
-      .read-time { grid-column: 2; }
-      .read-cue { margin-left: 8px; }
-      .article-body { margin-left: 54px; }
-      .swatches { min-height: 230px; grid-template-columns: 1fr 1fr; }
-      .principles { grid-template-columns: 1fr; }
-      .contact-item { grid-template-columns: 1fr; gap: 4px; }
-      .footer-inner { padding-inline: 18px; }
-      .footer-bottom { flex-direction: column; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition-duration: .01ms !important; }
-    }
-    /* CMS addition: expandable body for featured stories (renders only when a story has body text) */
-    .story-more { margin-top: 12px; }
-    .story-more summary { cursor: pointer; list-style: none; }
-    .story-more summary::-webkit-details-marker { display: none; }
-    .story-more summary::marker { display: none; }
-    .story-more[open] .read-cue::after { content: "\2212"; }
-    .story-body { margin-top: 10px; }
-    .story-body p { margin: 0 0 1em; }
-  </style>
-  <!-- Netlify Identity widget: handles invite/confirmation links (#invite_token) -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/site.css" />
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<meta name="p:domain_verify" content="77d7d553c6c2460065a75564fb167c56"/> </head>
+  <meta name="p:domain_verify" content="77d7d553c6c2460065a75564fb167c56" />
+</head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="masthead" aria-label="Glamora Girl header">
-    <nav class="nav" aria-label="Primary navigation">
-      <a class="brand" href="#main" aria-label="Glamora Girl home">Glamora <em>Girl</em></a>
-      <div class="nav-links">
-        <a href="#edit">The Edit</a>
-        <a href="#journal">Style Notes</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <a class="issue-link" href="#journal">Autumn 2026</a>
-    </nav>
+  <header class="masthead">
+    <div class="wrap">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="/" aria-label="Glamora Girl home">Glamora <em>Girl</em></a>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="#edit">The Edit</a>
+          <a href="#latest">Style Notes</a>
+          <a href="#about">About</a>
+        </div>
+        <button class="nav-search" aria-label="Search" onclick="return false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        </button>
+      </nav>
+    </div>
   </header>
 
   <main id="main">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="issue">Glamora Girl · The new-season edit</p>
-        <h1 id="hero-title">Style, on your own terms.</h1>
-        <p class="hero-deck">A fashion journal for expressive wardrobes, clever outfit formulas, and the quiet confidence that comes from wearing what feels like you.</p>
-        <a class="cta" href="#edit">Explore the edit</a>
+    <section class="featured" aria-label="Featured article">
+      <div class="wrap">
+        <!--FEATURED-->
+        <!--/FEATURED-->
       </div>
-      <figure class="hero-visual">
-        <img src="/images/hero.jpg" alt="Two women in bold street-style looks during fashion week" />
-        <figcaption class="photo-note">
-          <strong>Colour has entered the chat.</strong>
-          Street-style photograph via <a href="https://theyusufs.com/new-york-fashion-week-2022/" target="_blank" rel="noreferrer">The Yusufs</a>
-        </figcaption>
-      </figure>
     </section>
 
-    <div class="ticker" aria-label="Glamora Girl coverage">
-      <div class="ticker-inner">
-        <span>Personal style</span><i class="dot" aria-hidden="true"></i>
-        <span>Wardrobe intelligence</span><i class="dot" aria-hidden="true"></i>
-        <span>Colour confidence</span><i class="dot" aria-hidden="true"></i>
-        <span>Beauty, considered</span>
+    <div class="wrap">
+      <div class="blog-layout" id="latest">
+        <section aria-labelledby="latest-title">
+          <h2 class="section-title" id="latest-title">Latest from the Blog</h2>
+          <p class="section-sub">Style notes for getting dressed — useful ideas, not rules.</p>
+          <div class="cards">
+            <!--LATEST-->
+            <!--/LATEST-->
+          </div>
+        </section>
+        <aside class="sidebar" id="about" aria-label="About Glamora Girl">
+          <div class="widget">
+            <div class="widget-photo"><img src="/images/hero.jpg" alt="Glamora Girl editorial" /></div>
+            <h3>About Glamora Girl</h3>
+            <p>An independent style publication celebrating fashion as a creative practice — expressive wardrobes, clever outfit formulas, and the quiet confidence of wearing what feels like you.</p>
+          </div>
+          <div class="widget">
+            <h3>Recent Posts</h3>
+            <ul class="recent-list">
+              <!--RECENT-->
+              <!--/RECENT-->
+            </ul>
+          </div>
+        </aside>
       </div>
     </div>
 
-    <section class="section" id="edit" aria-labelledby="edit-title">
-      <div class="section-head">
-        <h2 id="edit-title">The Glamora edit</h2>
-        <p>Three directions to try now—adapted for real wardrobes, repeated wears, and a little everyday drama.</p>
-      </div>
-      <div class="stories">
-        <!--STORIES-->
-        <!--/STORIES-->
-      </div>
-    </section>
-
-    <section class="journal" id="journal" aria-labelledby="journal-title">
-      <div class="journal-inner">
-        <div class="journal-intro">
-          <h2 id="journal-title">Style notes for getting dressed</h2>
-          <p>Useful ideas, not rules. Open any story for a thoughtful, practical read written for real wardrobes, real mornings, and the pleasure of finding your own point of view.</p>
+    <section class="edit-strip" id="edit" aria-labelledby="edit-title">
+      <div class="wrap">
+        <h2 class="section-title" id="edit-title">The Glamora Edit</h2>
+        <p class="section-sub">Three directions to try now — adapted for real wardrobes and everyday drama.</p>
+        <div class="edit-cards">
+          <!--EDIT-->
+          <!--/EDIT-->
         </div>
-        <div class="article-list">
-          <!--JOURNAL-->
-          <!--/JOURNAL-->
-        </div>
-      </div>
-    </section>
-
-    <section class="palette" aria-labelledby="palette-title">
-      <div class="palette-copy">
-        <p class="issue">Colour study · 04</p>
-        <h2 id="palette-title">A palette with a point of view</h2>
-        <p>Berry brings depth, blush softens, marigold wakes everything up, and forest keeps the story grounded. Wear two together or let one interrupt a neutral base.</p>
-      </div>
-      <div class="swatches" role="img" aria-label="Colour palette: berry, blush, marigold and forest green">
-        <div class="swatch">Berry</div><div class="swatch">Blush</div><div class="swatch">Marigold</div><div class="swatch">Forest</div>
-      </div>
-    </section>
-
-    <section class="about-wrap" id="about" aria-labelledby="about-title">
-      <div class="about">
-        <div>
-          <p class="issue">About the publication</p>
-          <h2 id="about-title">Fashion with curiosity, not pressure.</h2>
-        </div>
-        <div class="about-copy">
-          <p>Glamora Girl is an independent style publication celebrating fashion as a creative practice. We care about strong ideas, useful advice, and clothes that earn their place in your life.</p>
-          <div class="principles">
-            <div class="principle"><strong>Personal before perfect</strong><span>Style starts with identity, comfort, and context—not a universal formula.</span></div>
-            <div class="principle"><strong>Wearability matters</strong><span>Editorial inspiration should still make sense on an ordinary Tuesday.</span></div>
-            <div class="principle"><strong>Thoughtful wardrobes</strong><span>We favour considered choices, repeat outfits, and honest cost-per-wear thinking.</span></div>
-            <div class="principle"><strong>Clear editorial voice</strong><span>No trend is above a useful question, and no wardrobe needs everything at once.</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact" id="contact" aria-labelledby="contact-title">
-      <div>
-        <p class="issue">Contact Glamora Girl</p>
-        <h2 id="contact-title">Ideas belong in conversation.</h2>
-        <p>For a considered reply, choose the note that best matches your message and include the relevant details from the start.</p>
-      </div>
-      <div class="contact-options" aria-label="Contact topics">
-        <div class="contact-item"><strong>Editorial pitches</strong><span>Story angle, audience, and why now</span></div>
-        <div class="contact-item"><strong>Brand partnerships</strong><span>Campaign brief, timing, and deliverables</span></div>
-        <div class="contact-item"><strong>Corrections & reader notes</strong><span>Article title and the detail to review</span></div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="footer-inner">
+    <div class="wrap footer-inner">
       <div class="footer-main">
         <div>
-          <div class="footer-brand">Glamora Girl</div>
+          <div class="footer-brand">Glamora <em>Girl</em></div>
           <p class="footer-tag">Independent fashion, expressive wardrobes, and a point of view worth wearing.</p>
         </div>
         <nav class="footer-nav" aria-label="Footer navigation">
-          <a href="#edit">The Edit</a><a href="#journal">Style Notes</a><a href="#about">About</a><a href="#contact">Contact</a><a href="/privacy.html">Privacy</a>
+          <a href="/">Home</a><a href="#edit">The Edit</a><a href="#latest">Style Notes</a><a href="#about">About</a><a href="/privacy.html">Privacy</a>
         </nav>
       </div>
       <div class="footer-bottom">
