@@ -160,3 +160,10 @@ footer { background: var(--cream); color: var(--ink); border-top: 1px solid var(
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: .01ms !important; }
 }
+
+/* ---------- ads (Adsterra) ---------- */
+.ad-slot { text-align: center; margin: 0 auto; }
+.ad-label { display: block; font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.ad-leaderboard { padding: 30px 0 2px; overflow: hidden; display: flex; flex-direction: column; align-items: center; }
+.ad-article { padding: 6px 0 36px; }
+.widget-ad { border: none; background: transparent; padding: 0; display: flex; flex-direction: column; align-items: center; }
