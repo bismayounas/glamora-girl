@@ -229,6 +229,24 @@ function main() {
     '\n</urlset>\n';
   fs.writeFileSync(path.join(PUBLIC, 'sitemap.xml'), sitemap, 'utf8');
 
+  /* ---- RSS 2.0 feed (for Bloglovin / Feedspot / Blogarama) ---- */
+  const rfc822 = iso => {
+    const d = new Date(iso + 'T00:00:00Z');
+    return isNaN(d) ? iso : d.toUTCString();
+  };
+  const rssItems = all.map(a =>
+    `  <item>\n    <title>${esc(a.title)}</title>\n    <link>${SITE}${a.url}</link>\n    <guid isPermaLink="true">${SITE}${a.url}</guid>\n    <pubDate>${rfc822(a.date)}</pubDate>\n    <description>${esc(a.excerpt)}</description>\n  </item>`).join('\n');
+  const rss =
+    '<?xml version="1.0" encoding="UTF-8"?>\n' +
+    '<rss version="2.0">\n<channel>\n' +
+    '  <title>Glamora Girl</title>\n' +
+    `  <link>${SITE}/</link>\n` +
+    '  <description>Girls\' fashion, styling notes and outfit ideas.</description>\n' +
+    '  <language>en-us</language>\n' +
+    `  <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>\n` +
+    rssItems + '\n</channel>\n</rss>\n';
+  fs.writeFileSync(path.join(PUBLIC, 'rss.xml'), rss, 'utf8');
+
   console.log(`built public/index.html + ${articles.length} article pages`);
   console.log(`images copied: ${copied}, static pages: ${pagesCopied}`);
   console.log('robots.txt + sitemap.xml written');
